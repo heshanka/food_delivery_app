@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'view/Canvas.dart';
-import 'view/Categories.dart';
-import 'view/Favorites.dart';
 
 void main() {
   runApp(MyApp());
