@@ -1,6 +1,6 @@
 class Product {
   Product(this.id, this.name, this.description, this.price, this.categoryId,
-      this.imgURL, this.available, this.favorite);
+      this.imgURL, this.available);
 
   int id;
   String name;
@@ -9,5 +9,4 @@ class Product {
   int categoryId;
   String imgURL;
   bool available;
-  bool favorite;
 }

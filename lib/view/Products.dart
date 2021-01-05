@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/view/Cart.dart';
+import '../Utils.dart';
 import '../model/Product.dart';
 import 'ProductCard.dart';
 
@@ -9,40 +10,9 @@ class Products extends StatelessWidget {
 
   Products({this.catId, this.catName});
 
-  List<Product> prodList = [
-    Product(
-        1,
-        "Lentil Soup",
-        "",
-        12.5,
-        1,
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.delishknowledge.com%2Fwp-content%2Fuploads%2Fredlentilsoup2.jpg&f=1&nofb=1",
-        true,
-        false),
-    Product(
-        2,
-        "Chicken Burger",
-        "",
-        6.50,
-        3,
-        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fghk.h-cdn.co%2Fassets%2F17%2F33%2F1502998809-burger-king-grilled-chicken-sandwich.jpg&f=1&nofb=1",
-        true,
-        false),
-    Product(
-        3,
-        "Beef Burger",
-        "",
-        9.20,
-        3,
-        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.wendys.co.id%2Fassets%2Fmedia%2Fgroup_product%2Fbeef_deluxe.png&f=1&nofb=1",
-        true,
-        false),
-    //Product(1, "Lentil Soup", "", 12.5, 1, "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.delishknowledge.com%2Fwp-content%2Fuploads%2Fredlentilsoup2.jpg&f=1&nofb=1", true, false),
-  ];
-
   List<ProductCard> getProductCardList() {
     List<ProductCard> productList = [];
-    for (Product p in prodList) {
+    for (Product p in Utils.productList) {
       if (p.categoryId == catId) {
         productList.add(ProductCard(p));
       }
