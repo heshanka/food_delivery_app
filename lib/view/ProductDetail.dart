@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/FavoritesModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../controller/CartModel.dart';
 import '../controller/MainModel.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -8,6 +9,7 @@ import '../model/Product.dart';
 
 class ProductDetail extends StatelessWidget {
   final Product product;
+  Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
   ProductDetail(this.product);
   @override
@@ -32,15 +34,16 @@ class ProductDetail extends StatelessWidget {
                     model: MainModel.getFavoritesModel(),
                     child: ScopedModelDescendant<FavoritesModel>(
                       builder: (context, child, model) => InkWell(
-                        onTap: () {
-                          model.favList.contains(product)
-                              ? model.removeFromFavorites(product.id)
-                              : model.addToFavorites(product.id);
+                        onTap: () async {
+                          model.favProductList.contains(product)
+                              ? model.removeFromFavorites(
+                                  product.id, await prefs)
+                              : model.addToFavorites(product.id, await prefs);
                         },
                         child: Icon(
                           Icons.favorite,
                           size: 40,
-                          color: model.favList.contains(product)
+                          color: model.favProductList.contains(product)
                               ? Colors.red
                               : Colors.grey,
                         ),

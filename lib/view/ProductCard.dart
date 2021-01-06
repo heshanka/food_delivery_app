@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/FavoritesModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../controller/CartModel.dart';
 import '../controller/MainModel.dart';
 import '../model/Product.dart';
@@ -13,6 +14,8 @@ class ProductCard extends StatelessWidget {
   final double imgHeight;
 
   ProductCard(this.product, {this.imgWidth = 150, this.imgHeight = 130});
+
+  Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +49,16 @@ class ProductCard extends StatelessWidget {
                         width: 45,
                         height: 20,
                         child: InkWell(
-                          onTap: () {
-                            model.favList.contains(product)
-                                ? model.removeFromFavorites(product.id)
-                                : model.addToFavorites(product.id);
+                          onTap: () async {
+                            model.favProductList.contains(product)
+                                ? model.removeFromFavorites(
+                                    product.id, await prefs)
+                                : model.addToFavorites(product.id, await prefs);
                           },
                           child: Icon(
                             Icons.favorite,
                             size: 30,
-                            color: model.favList.contains(product)
+                            color: model.favProductList.contains(product)
                                 ? Colors.red
                                 : Colors.grey,
                           ),
