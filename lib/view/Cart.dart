@@ -4,10 +4,12 @@ import 'package:food_delivery_app/controller/CartModel.dart';
 import 'package:food_delivery_app/controller/MainModel.dart';
 import 'package:food_delivery_app/view/CartItem.dart';
 import 'package:scoped_model/scoped_model.dart';
+import '../Utils.dart';
 
 class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return Scaffold(
         appBar: AppBar(
           title: Text("My Cart"),
@@ -15,7 +17,9 @@ class Cart extends StatelessWidget {
         body: ScopedModel(
             model: MainModel.getCartModel(),
             child: ScopedModelDescendant<CartModel>(
-                builder: (context, child, model) => Stack(
+                builder: (context, child, model) => 
+                model.productMap.keys.isNotEmpty ?
+                Stack(
                       children: [
                         ListView.builder(
                             itemCount: model.productMap.length,
@@ -26,8 +30,8 @@ class Cart extends StatelessWidget {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 50,
+                            width: Utils.getScreenWidth(context),
+                            height: 50 * scaleFactor,
                             color: Color(0xffffb80e),
                             child: Center(
                               child: RichText(
@@ -45,12 +49,14 @@ class Cart extends StatelessWidget {
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold)),
                                   ],
-                                ),
+                                ),textScaleFactor: scaleFactor,
                               ),
                             ),
                           ),
                         ),
                       ],
-                    ))));
+                    ): Center(child: Image.asset("assets/emptycart.png", 
+                    width: 200 * scaleFactor, 
+                    height: 200 * scaleFactor)))));
   }
 }
