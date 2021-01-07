@@ -1,9 +1,20 @@
+import 'model/Category.dart';
 import 'model/Product.dart';
 import 'package:intl/intl.dart';
 
 class Utils {
   static var numFormat = new NumberFormat("###.00", "en_US");
 
+  static  List<Category> categoryList = [
+    Category(1, "Soups",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.villagecoffee.biz%2Fwp-content%2Fuploads%2F2017%2F01%2FSoup_Tomato.png&f=1&nofb=1"),
+    Category(2, "Pizza",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fredgrasshopper.com.au%2Fwp-content%2Fuploads%2F2019%2F05%2Fpizza.png&f=1&nofb=1"),
+    Category(3, "Burgers",
+        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffreepngimages.com%2Fwp-content%2Fuploads%2F2016%2F11%2Fbacon-burger.png&f=1&nofb=1"),
+    Category(4, "Chinese",
+        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.hertfordshirekarate.co.uk%2Fwp-content%2Fuploads%2F2017%2F01%2Fchinese-food.png&f=1&nofb=1"),
+  ];
   static List<Product> productList = [
     Product(
       1,
