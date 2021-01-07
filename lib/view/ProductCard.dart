@@ -122,6 +122,9 @@ class ProductCard extends StatelessWidget {
                   children: [
                     ScopedModelDescendant<CartModel>(
                       builder: (context, child, model) => InkWell(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(30)),
                         onTap: () {
                           model.addToCart(product.id, quantity: 1);
                         },

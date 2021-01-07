@@ -51,7 +51,7 @@ class Utils {
       4,
       "Cheese Lovers",
       "",
-      5.555,
+      5.55,
       2,
       "https://www.cottageinn.com/app/uploads/2014/07/GarlicCheeseBread_sm1.png",
       true,

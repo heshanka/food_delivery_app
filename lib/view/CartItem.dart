@@ -31,14 +31,32 @@ class CartItem extends StatelessWidget {
                           onTap: () {
                             model.addToCart(product.id, quantity: 1);
                           },
-                          child: Icon(Icons.add_circle)),
-                      Text(model.getProductQuantity(product.id).toString()),
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            child: Icon(Icons.add, size: 18,),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
+                          color: Color(0xffdbdbdb),
+                          ),
+                          )),
+                      Padding(
+                        padding: EdgeInsets.only(top:8.0, bottom: 8.0),
+                        child: Text(model.getProductQuantity(product.id).toString(),
+                        style: TextStyle(fontSize: 16),
+                        ),
+                      ),
                       InkWell(
                           onTap: () {
                             model.removeFromCart(product.id, quantity: 1);
                           },
-                          child: Icon(Icons.remove_circle)),
-                    ],
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            child: Icon(Icons.remove, size: 18,),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
+                          color: Color(0xffdbdbdb),
+                          ),),
+                      )],
                   ),
                 ),
                 CachedNetworkImage(
@@ -53,7 +71,7 @@ class CartItem extends StatelessWidget {
                   height: 120 * scaleFactor,
                 ),
                 Text(
-                  "\$" + product.price.toString(),
+                  "\$" + Utils.numFormat.format(product.price),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   textScaleFactor: scaleFactor,
                 )
@@ -62,6 +80,8 @@ class CartItem extends StatelessWidget {
           ),
           Divider(
             color: Colors.grey,
+            indent: 20 * scaleFactor,
+            endIndent: 20 * scaleFactor,
           )
         ],
       ),
