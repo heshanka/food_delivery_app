@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/FavoritesModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../CartWidget.dart';
+import '../Utils.dart';
 import '../controller/CartModel.dart';
 import '../controller/MainModel.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -16,6 +17,7 @@ class ProductDetail extends StatelessWidget {
   ProductDetail(this.product);
   @override
   Widget build(BuildContext context) {
+    double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return Scaffold(
       appBar: AppBar(
         title: Text(product.name),
@@ -36,29 +38,34 @@ class ProductDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 8.0, right: 12.0),
+            padding: EdgeInsets.only(
+                top: 8.0 * scaleFactor, right: 12.0 * scaleFactor),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  width: 45,
-                  height: 20,
+                  width: 45 * scaleFactor,
+                  height: 45 * scaleFactor,
                   child: ScopedModel(
                     model: MainModel.getFavoritesModel(),
                     child: ScopedModelDescendant<FavoritesModel>(
-                      builder: (context, child, model) => InkWell(
+                      builder: (context, child, model) => 
+                      InkWell(
+                        borderRadius: BorderRadius.circular(45),
                         onTap: () async {
                           model.favProductList.contains(product)
                               ? model.removeFromFavorites(
                                   product.id, await prefs)
                               : model.addToFavorites(product.id, await prefs);
                         },
-                        child: Icon(
-                          Icons.favorite,
-                          size: 40,
-                          color: model.favProductList.contains(product)
-                              ? Colors.red
-                              : Colors.grey,
+                        child: Center(
+                          child: Icon(
+                            Icons.favorite,
+                            size: 40 * scaleFactor,
+                            color: model.favProductList.contains(product)
+                                ? Colors.red
+                                : Colors.grey,
+                          ),
                         ),
                       ),
                     ),
@@ -71,32 +78,37 @@ class ProductDetail extends StatelessWidget {
           ),
           Center(
             child: CachedNetworkImage(
-              placeholder: (context, url) => 
-              Container(
-                    child: Image.asset(
-                      "assets/edited.gif",
-                    ),
-                  ),//,
+              placeholder: (context, url) => Container(
+                child: Image.asset(
+                  "assets/edited.gif",
+                ),
+              ), //,
               imageUrl: product.imgURL,
-              width: 300,
-              height: 260,
+              width: 300 * scaleFactor,
+              height: 260 * scaleFactor,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0, top: 8.0),
+            padding: EdgeInsets.only(
+                left: 20.0 * scaleFactor, top: 8.0 * scaleFactor),
             child: Text(
               product.name,
               style: TextStyle(fontSize: 18),
+              textScaleFactor: scaleFactor,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 8.0),
+            padding: EdgeInsets.only(
+                left: 20.0 * scaleFactor,
+                right: 20.0 * scaleFactor,
+                top: 8.0 * scaleFactor),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "\$" + product.price.toString(),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  textScaleFactor: scaleFactor,
                 ),
                 ScopedModel(
                   model: MainModel.getCartModel(),
@@ -108,8 +120,8 @@ class ProductDetail extends StatelessWidget {
                             model.removeFromCart(product.id);
                           },
                           child: Container(
-                            width: 30,
-                            height: 30,
+                            width: 30 * scaleFactor,
+                            height: 30 * scaleFactor,
                             decoration: BoxDecoration(
                                 color: Color(0xfffdb827),
                                 borderRadius: BorderRadius.circular(5)),
@@ -117,11 +129,14 @@ class ProductDetail extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                          padding: EdgeInsets.only(
+                              left: 8.0 * scaleFactor,
+                              right: 8.0 * scaleFactor),
                           child: Text(
                             model.getProductQuantity(product.id).toString(),
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
+                            textScaleFactor: scaleFactor,
                           ),
                         ),
                         InkWell(
@@ -129,8 +144,8 @@ class ProductDetail extends StatelessWidget {
                             model.addToCart(product.id);
                           },
                           child: Container(
-                            width: 30,
-                            height: 30,
+                            width: 30 * scaleFactor,
+                            height: 30 * scaleFactor,
                             decoration: BoxDecoration(
                                 color: Color(0xfffdb827),
                                 borderRadius: BorderRadius.circular(5)),
@@ -145,10 +160,14 @@ class ProductDetail extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(
+                top: 20.0 * scaleFactor,
+                left: 20.0 * scaleFactor,
+                right: 20.0 * scaleFactor),
             child: Text(
               product.description,
               style: TextStyle(fontSize: 16),
+              textScaleFactor: scaleFactor,
             ),
           )
         ],

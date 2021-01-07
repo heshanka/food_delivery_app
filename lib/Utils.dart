@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'model/Category.dart';
 import 'model/Product.dart';
 import 'package:intl/intl.dart';
@@ -5,7 +7,9 @@ import 'package:intl/intl.dart';
 class Utils {
   static var numFormat = new NumberFormat("###.00", "en_US");
 
-  static  List<Category> categoryList = [
+  static double pWidth = 392.7;
+
+  static List<Category> categoryList = [
     Category(1, "Soups",
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.villagecoffee.biz%2Fwp-content%2Fuploads%2F2017%2F01%2FSoup_Tomato.png&f=1&nofb=1"),
     Category(2, "Pizza",
@@ -80,4 +84,22 @@ class Utils {
       true,
     ),
   ];
+
+  static const double toolbarHeight = 56.0;
+
+  static Size getScreenSize(BuildContext context) {
+    return MediaQuery.of(context).size;
+  }
+
+  static double getScreenHeight(BuildContext context) {
+    return getScreenSize(context).height;
+  }
+
+  static double getScreenWidth(BuildContext context) {
+    return getScreenSize(context).width;
+  }
+
+  static double getStatusBarHeight(BuildContext context) {
+    return MediaQuery.of(context).padding.top;
+  }
 }

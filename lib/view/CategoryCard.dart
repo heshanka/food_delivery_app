@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../Utils.dart';
 import '../model/Category.dart';
 import 'Products.dart';
 
@@ -12,7 +14,9 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return InkWell(
+      borderRadius: BorderRadius.circular(15),
       onTap: () {
         Navigator.push(
           context,
@@ -25,11 +29,14 @@ class CategoryCard extends StatelessWidget {
         );
       },
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.all(8 * scaleFactor),
         decoration: BoxDecoration(
-            color: Color(0xfff5f4f4),
-            borderRadius: BorderRadius.only(bottomRight: Radius.circular(30))),
-        child: Column(children: [
+            color: Color(0xfff6f6f6),
+            border: Border.all(width: 0.2, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
           CachedNetworkImage(
             placeholder: (context, url) => 
             Container(
@@ -38,11 +45,15 @@ class CategoryCard extends StatelessWidget {
                     ),
             ), 
             imageUrl: category.imgURL,
-            height: imgHeight,
+            height: imgHeight  * scaleFactor,
           ),
           Text(
             category.name,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: GoogleFonts.redressed(
+                        fontSize: 22,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal),
+                        textScaleFactor: scaleFactor,
           ),
         ]),
         //color: Colors.teal[100],

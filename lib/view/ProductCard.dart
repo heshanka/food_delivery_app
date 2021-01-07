@@ -20,7 +20,13 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return InkWell(
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(5),
+          topRight: Radius.circular(15),
+          bottomLeft: Radius.circular(15),
+          bottomRight: Radius.circular(30)),
       onTap: () {
         Navigator.push(
           context,
@@ -30,12 +36,16 @@ class ProductCard extends StatelessWidget {
         );
       },
       child: Container(
-        padding: const EdgeInsets.only(
-          top: 8,
+        padding: EdgeInsets.only(
+          top: 8 * scaleFactor,
         ),
         decoration: BoxDecoration(
             color: Color(0xfff5f4f4),
-            borderRadius: BorderRadius.only(bottomRight: Radius.circular(30))),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5),
+                topRight: Radius.circular(15),
+                bottomLeft: Radius.circular(15),
+                bottomRight: Radius.circular(30))),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,9 +57,14 @@ class ProductCard extends StatelessWidget {
                   children: [
                     ScopedModelDescendant<FavoritesModel>(
                       builder: (context, child, model) => Container(
-                        width: 45,
-                        height: 20,
+                        width: 45 * scaleFactor,
+                        height: 20 * scaleFactor,
                         child: InkWell(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(5),
+                              topRight: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(30)),
                           onTap: () async {
                             model.favProductList.contains(product)
                                 ? model.removeFromFavorites(
@@ -58,7 +73,7 @@ class ProductCard extends StatelessWidget {
                           },
                           child: Icon(
                             Icons.favorite,
-                            size: 30,
+                            size: 30 * scaleFactor,
                             color: model.favProductList.contains(product)
                                 ? Colors.red
                                 : Colors.grey,
@@ -73,29 +88,31 @@ class ProductCard extends StatelessWidget {
               ),
               Center(
                 child: CachedNetworkImage(
-                  placeholder: (context, url) => 
-                  Container(
-                    child: Image.asset(
-                      "assets/edited.gif",
-                    ),
-                  ), //,
-                  imageUrl: product.imgURL,
-                  height:imgHeight
-                  
-                ),
+                    placeholder: (context, url) => Container(
+                          child: Image.asset(
+                            "assets/edited.gif",
+                          ),
+                        ), //,
+                    imageUrl: product.imgURL,
+                    height: imgHeight * scaleFactor),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: EdgeInsets.only(left: 8.0 * scaleFactor),
                 child: Text(
                   product.name,
                   style: TextStyle(fontSize: 16),
+                  textScaleFactor: scaleFactor,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+                padding: EdgeInsets.only(
+                    top: 8.0 * scaleFactor, left: 8.0 * scaleFactor),
                 child: Text(
-                  "\$" + Utils.numFormat.format(product.price), //product.price.toStringAsFixed(2),
+                  "\$" +
+                      Utils.numFormat.format(
+                          product.price), //product.price.toStringAsFixed(2),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  textScaleFactor: scaleFactor,
                 ),
               ),
               ScopedModel(
@@ -109,8 +126,8 @@ class ProductCard extends StatelessWidget {
                           model.addToCart(product.id, quantity: 1);
                         },
                         child: Container(
-                          width: 45,
-                          height: 42,
+                          width: 45 * scaleFactor,
+                          height: 45 * scaleFactor,
                           child: Icon(Icons.add_shopping_cart_rounded),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(

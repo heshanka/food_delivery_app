@@ -23,6 +23,7 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return Scaffold(
       appBar: AppBar(
         title: Text(catName),
@@ -46,9 +47,9 @@ class Products extends StatelessWidget {
             child: GridView.count(
               childAspectRatio: 0.725,
               primary: false,
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              padding: EdgeInsets.only(left: 10 * scaleFactor, right: 10 * scaleFactor, top: 10 * scaleFactor),
+              crossAxisSpacing: 10 * scaleFactor,
+              mainAxisSpacing: 10 * scaleFactor,
               crossAxisCount: 2,
               children: getProductCardList(),
             ),

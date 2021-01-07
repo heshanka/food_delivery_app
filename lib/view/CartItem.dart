@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/model/Product.dart';
+import '../Utils.dart';
 import '../controller/CartModel.dart';
 import '../controller/MainModel.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -12,12 +13,13 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return ScopedModel(
       model: MainModel.getCartModel(),
       child: Column(
         children: [
           Container(
-            height: 130,
+            height: 130 * scaleFactor,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -47,12 +49,13 @@ class CartItem extends StatelessWidget {
                     ),
                   ), //,
                   imageUrl: product.imgURL,
-                  width: 100,
-                  height: 120,
+                  width: 100 * scaleFactor,
+                  height: 120 * scaleFactor,
                 ),
                 Text(
                   "\$" + product.price.toString(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  textScaleFactor: scaleFactor,
                 )
               ],
             ),

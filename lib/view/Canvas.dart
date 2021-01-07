@@ -44,7 +44,7 @@ class Canvas extends StatelessWidget {
             return BottomNavigationBar(
               items: navbarItems,
               currentIndex: model.getSelectedIndex(),
-              selectedItemColor: Colors.amber[800],
+              selectedItemColor: Color(0xfff84b18),
               onTap: (int i) {
                 model.onItemTapped(i);
               },
