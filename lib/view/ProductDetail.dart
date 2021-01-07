@@ -77,7 +77,7 @@ class ProductDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  product.price.toString() + " USD",
+                  "\$" + product.price.toString(),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 ScopedModel(

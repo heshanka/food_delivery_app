@@ -47,7 +47,7 @@ class CartItem extends StatelessWidget {
                   height: 120,
                 ),
                 Text(
-                  product.price.toString() + " USD",
+                  "\$" + product.price.toString(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 )
               ],

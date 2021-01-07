@@ -28,7 +28,7 @@ class Cart extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             height: 50,
-                            color: Color(0xfffdb827),
+                            color: Color(0xffffb80e),
                             child: Center(
                               child: RichText(
                                 text: TextSpan(
@@ -37,10 +37,9 @@ class Cart extends StatelessWidget {
                                       fontSize: 16, color: Colors.black),
                                   children: <TextSpan>[
                                     TextSpan(
-                                        text: model
+                                        text: "\$" + model
                                                 .getTotalCartPrice()
-                                                .toStringAsFixed(2) +
-                                            " USD",
+                                                .toStringAsFixed(2),
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 18,

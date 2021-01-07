@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/FavoritesModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../Utils.dart';
 import '../controller/CartModel.dart';
 import '../controller/MainModel.dart';
 import '../model/Product.dart';
@@ -70,11 +71,13 @@ class ProductCard extends StatelessWidget {
                   ],
                 ),
               ),
-              CachedNetworkImage(
-                placeholder: (context, url) => CircularProgressIndicator(), //,
-                imageUrl: product.imgURL,
-                width: imgWidth,
-                height: imgHeight,
+              Center(
+                child: CachedNetworkImage(
+                  placeholder: (context, url) => CircularProgressIndicator(), //,
+                  imageUrl: product.imgURL,
+                  height:imgHeight
+                  
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
@@ -86,7 +89,7 @@ class ProductCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, left: 8.0),
                 child: Text(
-                  product.price.toString() + "USD",
+                  "\$" + Utils.numFormat.format(product.price), //product.price.toStringAsFixed(2),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
