@@ -28,12 +28,7 @@ class ProductCard extends StatelessWidget {
           bottomLeft: Radius.circular(15),
           bottomRight: Radius.circular(30)),
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductDetail(product),
-          ),
-        );
+        Navigator.of(context).push(_createRoute(product));
       },
       child: Container(
         padding: EdgeInsets.only(
@@ -148,4 +143,22 @@ class ProductCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute(Product product) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => ProductDetail(product),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
