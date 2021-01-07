@@ -71,7 +71,12 @@ class ProductDetail extends StatelessWidget {
           ),
           Center(
             child: CachedNetworkImage(
-              placeholder: (context, url) => CircularProgressIndicator(), //,
+              placeholder: (context, url) => 
+              Container(
+                    child: Image.asset(
+                      "assets/edited.gif",
+                    ),
+                  ),//,
               imageUrl: product.imgURL,
               width: 300,
               height: 260,

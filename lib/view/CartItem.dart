@@ -41,7 +41,11 @@ class CartItem extends StatelessWidget {
                 ),
                 CachedNetworkImage(
                   placeholder: (context, url) =>
-                      CircularProgressIndicator(), //,
+                      Container(
+                    child: Image.asset(
+                      "assets/edited.gif",
+                    ),
+                  ), //,
                   imageUrl: product.imgURL,
                   width: 100,
                   height: 120,

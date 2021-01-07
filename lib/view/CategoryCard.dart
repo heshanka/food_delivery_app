@@ -31,9 +31,13 @@ class CategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.only(bottomRight: Radius.circular(30))),
         child: Column(children: [
           CachedNetworkImage(
-            placeholder: (context, url) => CircularProgressIndicator(), //,
+            placeholder: (context, url) => 
+            Container(
+              child: Image.asset(
+                      "assets/edited.gif",
+                    ),
+            ), 
             imageUrl: category.imgURL,
-            width: imgWidth,
             height: imgHeight,
           ),
           Text(
