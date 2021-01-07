@@ -2,10 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/FavoritesModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../CartWidget.dart';
 import '../controller/CartModel.dart';
 import '../controller/MainModel.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../model/Product.dart';
+import 'Cart.dart';
 
 class ProductDetail extends StatelessWidget {
   final Product product;
@@ -17,6 +19,17 @@ class ProductDetail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(product.name),
+        actions: [
+          IconButton(
+            icon: CartWidget(),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Cart(),
+              ),
+            ),
+          )
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/MainModel.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import '../CartWidget.dart';
 import 'Cart.dart';
 import 'Categories.dart';
 import 'Favorites.dart';
@@ -15,19 +16,19 @@ class Canvas extends StatelessWidget {
     Favorites(),
   ];
 
-  static const List<BottomNavigationBarItem> navbarItems =
+  static List<BottomNavigationBarItem> navbarItems =
       <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
-      title: Text("Home"),
+      label: "Home",
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.shopping_cart),
-      title: Text("Cart"),
+      icon: CartWidget(),
+      label: "Cart",
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.favorite),
-      title: Text("Favorites"),
+      label: "Favorites",
     ),
   ];
   @override

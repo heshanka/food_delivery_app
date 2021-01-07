@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/CartWidget.dart';
 import 'package:food_delivery_app/view/Cart.dart';
 import '../Utils.dart';
 import '../model/Product.dart';
@@ -26,29 +27,14 @@ class Products extends StatelessWidget {
       appBar: AppBar(
         title: Text(catName),
         actions: [
-          Stack(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.shopping_cart,
-                  size: 25,
-                ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Cart(),
-                  ),
-                ),
+          IconButton(
+            icon: CartWidget(),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Cart(),
               ),
-              // Align(
-              //   alignment: Alignment(-1, -1),
-              //   child: Container(
-              //     width: 20,
-              //     decoration:
-              //         BoxDecoration(shape: BoxShape.circle, color: Colors.red),
-              //   ),
-              // )
-            ],
+            ),
           )
         ],
       ),

@@ -3,7 +3,7 @@ import '../model/Product.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CartModel extends Model {
-  //productID, quantity
+  //Product, quantity
   Map<Product, int> productMap = {};
 
   void addToCart(int prodID, {int quantity = 1}) {
@@ -49,5 +49,13 @@ class CartModel extends Model {
       totalPrice += productMap[key] * key.price;
     }
     return totalPrice;
+  }
+
+  int getTotalCartQuantity() {
+    int totalQuantity = 0;
+    for (Product key in productMap.keys) {
+      totalQuantity += productMap[key];
+    }
+    return totalQuantity;
   }
 }
