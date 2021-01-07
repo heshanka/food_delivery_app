@@ -40,7 +40,7 @@ class Favorites extends StatelessWidget {
                       )
                     : Padding(
                       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/3.5,
-                      left: 16, right: 16),
+                      left: 16 * scaleFactor, right: 16 * scaleFactor),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

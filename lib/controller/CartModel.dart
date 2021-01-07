@@ -58,4 +58,9 @@ class CartModel extends Model {
     }
     return totalQuantity;
   }
+
+  void emptyCart() {
+    productMap.clear();
+    notifyListeners();
+  }
 }
