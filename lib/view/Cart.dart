@@ -68,7 +68,7 @@ class Cart extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () => showSuccessDialog(context),
+                                onTap: () => showSuccessDialog(context, model),
                                 child: Container(
                                     width: Utils.getScreenWidth(context) / 2,
                                     height: 50 * scaleFactor,
@@ -92,7 +92,7 @@ class Cart extends StatelessWidget {
     );
   }
 
-  void showSuccessDialog(BuildContext context) {
+  void showSuccessDialog(BuildContext context, CartModel model) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -101,7 +101,10 @@ class Cart extends StatelessWidget {
           actions: <Widget>[
             FlatButton(
               child: Text("Done"),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(context).pop();
+                model.emptyCart();
+              },
             ),
           ],
           content: Column(
