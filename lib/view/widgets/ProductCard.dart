@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:food_delivery_app/controller/FavoritesModel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../Utils.dart';
-import '../controller/CartModel.dart';
-import '../controller/MainModel.dart';
-import '../model/Product.dart';
-import 'ProductDetail.dart';
-import 'package:scoped_model/scoped_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:food_delivery_app/controller/FavoritesController.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../Utils.dart';
+import '../../controller/CartModel.dart';
+import '../../controller/MainController.dart';
+import '../../model/Product.dart';
+import '../screens/ProductDetail.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -46,7 +46,7 @@ class ProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ScopedModel(
-                model: MainModel.getFavoritesModel(),
+                model: MainController.getFavoritesModel(),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -84,7 +84,7 @@ class ProductCard extends StatelessWidget {
               Center(
                 child: Hero(
                   tag: product.heroTag,
-                                  child: CachedNetworkImage(
+                  child: CachedNetworkImage(
                       placeholder: (context, url) => Container(
                             child: Image.asset(
                               "assets/edited.gif",
@@ -114,11 +114,11 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               ScopedModel(
-                model: MainModel.getCartModel(),
+                model: MainController.getCartModel(),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ScopedModelDescendant<CartModel>(
+                    ScopedModelDescendant<CartController>(
                       builder: (context, child, model) => InkWell(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
@@ -150,7 +150,8 @@ class ProductCard extends StatelessWidget {
 
 Route _createRoute(Product product) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => ProductDetail(product),
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        ProductDetail(product),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);
       var end = Offset.zero;

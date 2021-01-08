@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'view/Canvas.dart';
+import 'view/screens/Canvas.dart';
 
 void main() {
   runApp(MyApp());

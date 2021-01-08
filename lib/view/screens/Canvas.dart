@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/controller/MainModel.dart';
+import 'package:food_delivery_app/controller/MainController.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-import '../CartWidget.dart';
+import '../widgets/CartWidget.dart';
 import 'Cart.dart';
 import 'Categories.dart';
 import 'Favorites.dart';
 
 class Canvas extends StatelessWidget {
-  MainModel model = MainModel();
+  MainController model = MainController();
 
   List<Widget> pages = <Widget>[
     Categories(),
@@ -36,10 +36,10 @@ class Canvas extends StatelessWidget {
     return ScopedModel(
       model: model,
       child: Scaffold(
-          body: ScopedModelDescendant<MainModel>(
+          body: ScopedModelDescendant<MainController>(
             builder: (context, child, model) => pages[model.getSelectedIndex()],
           ),
-          bottomNavigationBar: ScopedModelDescendant<MainModel>(
+          bottomNavigationBar: ScopedModelDescendant<MainController>(
               builder: (context, child, model) {
             return BottomNavigationBar(
               items: navbarItems,

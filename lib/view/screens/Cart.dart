@@ -1,22 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/CartModel.dart';
-import 'package:food_delivery_app/controller/MainModel.dart';
-import 'package:food_delivery_app/view/CartItem.dart';
+import 'package:food_delivery_app/controller/MainController.dart';
+import 'package:food_delivery_app/view/widgets/CartItem.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../Utils.dart';
+import '../../Utils.dart';
 
 class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return ScopedModel(
-      model: MainModel.getCartModel(),
+      model: MainController.getCartModel(),
       child: Scaffold(
           appBar: AppBar(
             title: Text("My Cart"),
             actions: [
-              ScopedModelDescendant<CartModel>(
+              ScopedModelDescendant<CartController>(
                   builder: (context, child, model) => IconButton(
                       icon: Icon(Icons.delete),
                       onPressed: () {
@@ -24,7 +24,7 @@ class Cart extends StatelessWidget {
                       }))
             ],
           ),
-          body: ScopedModelDescendant<CartModel>(
+          body: ScopedModelDescendant<CartController>(
               builder: (context, child, model) => model
                       .productMap.keys.isNotEmpty
                   ? Stack(
@@ -92,7 +92,7 @@ class Cart extends StatelessWidget {
     );
   }
 
-  void showSuccessDialog(BuildContext context, CartModel model) {
+  void showSuccessDialog(BuildContext context, CartController model) {
     showDialog(
       context: context,
       barrierDismissible: false,

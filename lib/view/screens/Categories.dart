@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import '../controller/MainModel.dart';
-import '../model/Category.dart';
-import '../view/CategoryCard.dart';
+import '../../controller/MainController.dart';
+import '../../model/Category.dart';
+import '../widgets/CategoryCard.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'dart:math' as Math;
 
-import '../Utils.dart';
+import '../../Utils.dart';
 
 class Categories extends StatelessWidget {
-  final MainModel model = MainModel();
+  final MainController model = MainController();
 
   List<Widget> returnCategoryCardList() {
     //MainModel.getFavoritesModel().getFavProductCardList();
@@ -36,7 +36,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
-    MainModel.getFavoritesModel().getFavProductCardList();
+    MainController.getFavoritesModel().getFavProductCardList();
     return ScopedModel(
       model: model,
       child: Scaffold(

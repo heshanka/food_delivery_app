@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/controller/FavoritesModel.dart';
+import 'package:food_delivery_app/controller/FavoritesController.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../CartWidget.dart';
-import '../Utils.dart';
-import '../controller/CartModel.dart';
-import '../controller/MainModel.dart';
+import '../widgets/CartWidget.dart';
+import '../../Utils.dart';
+import '../../controller/CartModel.dart';
+import '../../controller/MainController.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../model/Product.dart';
+import '../../model/Product.dart';
 import 'Cart.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -47,10 +47,9 @@ class ProductDetail extends StatelessWidget {
                   width: 45 * scaleFactor,
                   height: 45 * scaleFactor,
                   child: ScopedModel(
-                    model: MainModel.getFavoritesModel(),
+                    model: MainController.getFavoritesModel(),
                     child: ScopedModelDescendant<FavoritesModel>(
-                      builder: (context, child, model) => 
-                      InkWell(
+                      builder: (context, child, model) => InkWell(
                         borderRadius: BorderRadius.circular(45),
                         onTap: () async {
                           model.favProductList.contains(product)
@@ -79,7 +78,8 @@ class ProductDetail extends StatelessWidget {
           Center(
             child: Hero(
               tag: product.heroTag,
-                          child: CachedNetworkImage(
+              child:    
+              CachedNetworkImage(
                 placeholder: (context, url) => Container(
                   child: Image.asset(
                     "assets/edited.gif",
@@ -114,8 +114,8 @@ class ProductDetail extends StatelessWidget {
                   textScaleFactor: scaleFactor,
                 ),
                 ScopedModel(
-                  model: MainModel.getCartModel(),
-                  child: ScopedModelDescendant<CartModel>(
+                  model: MainController.getCartModel(),
+                  child: ScopedModelDescendant<CartController>(
                     builder: (context, child, model) => Row(
                       children: [
                         InkWell(

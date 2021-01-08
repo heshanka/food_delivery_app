@@ -1,5 +1,5 @@
 import 'package:food_delivery_app/model/Product.dart';
-import 'package:food_delivery_app/view/ProductCard.dart';
+import 'package:food_delivery_app/view/widgets/ProductCard.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Utils.dart';
@@ -60,10 +60,12 @@ class FavoritesModel extends Model {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       //retreive the list with key 'favList'
       List<String> stringIds = prefs.getStringList('favList');
-      for (String pId in stringIds) {
-        for (Product product in Utils.productList) {
-          if (int.parse(pId) == product.id) {
-            favProductList.add(product);
+      if (stringIds != null) {
+        for (String pId in stringIds) {
+          for (Product product in Utils.productList) {
+            if (int.parse(pId) == product.id && !favProductList.contains(product)) {
+              favProductList.add(product);
+            }
           }
         }
       }

@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/model/Product.dart';
-import '../Utils.dart';
-import '../controller/CartModel.dart';
-import '../controller/MainModel.dart';
+import '../../Utils.dart';
+import '../../controller/CartModel.dart';
+import '../../controller/MainController.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CartItem extends StatelessWidget {
@@ -15,7 +15,7 @@ class CartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     double scaleFactor = Utils.getScreenWidth(context) / Utils.pWidth;
     return ScopedModel(
-      model: MainModel.getCartModel(),
+      model: MainController.getCartModel(),
       child: Column(
         children: [
           Container(
@@ -23,7 +23,7 @@ class CartItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ScopedModelDescendant<CartModel>(
+                ScopedModelDescendant<CartController>(
                   builder: (context, child, model) => Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

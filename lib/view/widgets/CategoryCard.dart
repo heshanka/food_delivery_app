@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../Utils.dart';
-import '../model/Category.dart';
-import 'Products.dart';
+import '../../Utils.dart';
+import '../../model/Category.dart';
+import '../screens/Products.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;
@@ -34,26 +34,22 @@ class CategoryCard extends StatelessWidget {
             color: Color(0xfff6f6f6),
             border: Border.all(width: 0.2, color: Colors.grey),
             borderRadius: BorderRadius.circular(15)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           CachedNetworkImage(
-            placeholder: (context, url) => 
-            Container(
-              child: Image.asset(
+              placeholder: (context, url) => Container(
+                    child: Image.asset(
                       "assets/edited.gif",
                     ),
-            ), 
-            imageUrl: category.imgURL,
-            height: imgHeight  * scaleFactor,
-          ),
+                  ), //,
+              imageUrl: category.imgURL,
+              height: imgHeight * scaleFactor),
           Text(
             category.name,
             style: GoogleFonts.redressed(
-                        fontSize: 22,
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal),
-                        textScaleFactor: scaleFactor,
+                fontSize: 22,
+                color: Colors.black,
+                fontWeight: FontWeight.normal),
+            textScaleFactor: scaleFactor,
           ),
         ]),
         //color: Colors.teal[100],

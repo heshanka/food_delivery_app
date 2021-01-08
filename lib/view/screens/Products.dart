@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/CartWidget.dart';
-import 'package:food_delivery_app/view/Cart.dart';
-import '../Utils.dart';
-import '../model/Product.dart';
-import 'ProductCard.dart';
+import 'package:food_delivery_app/view/widgets/CartWidget.dart';
+import 'package:food_delivery_app/view/screens/Cart.dart';
+import '../../Utils.dart';
+import '../../model/Product.dart';
+import '../widgets/ProductCard.dart';
 
 class Products extends StatelessWidget {
   final int catId;

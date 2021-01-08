@@ -2,7 +2,7 @@ import '../Utils.dart';
 import '../model/Product.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-class CartModel extends Model {
+class CartController extends Model {
   //Product, quantity
   Map<Product, int> productMap = {};
 
