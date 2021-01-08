@@ -28,6 +28,7 @@ class Utils {
       1,
       "https://menu.indolj.com/upload/1584438166-1553264528-12-Lentil-Soup-\$4.99.jpeg-2.png",
       true,
+      "Lentil Soup"
     ),
     Product(
       2,
@@ -37,6 +38,7 @@ class Utils {
       3,
       "http://ghk.h-cdn.co/assets/17/33/1502998809-burger-king-grilled-chicken-sandwich.jpg",
       true,
+      "Chicken Burger",
     ),
     Product(
       3,
@@ -46,6 +48,7 @@ class Utils {
       3,
       "http://www.wendys.co.id/assets/media/group_product/beef_deluxe.png",
       true,
+      "Beef Burger",
     ),
     Product(
       4,
@@ -55,6 +58,7 @@ class Utils {
       2,
       "https://www.cottageinn.com/app/uploads/2014/07/GarlicCheeseBread_sm1.png",
       true,
+      "Cheese Lovers",
     ),
     Product(
       5,
@@ -64,6 +68,7 @@ class Utils {
       4,
       "https://eatchinwa.com/wp-content/uploads/2019/04/Chinwa-Chinwa%E2%80%99s-Fried-Rice-Chicken.png",
       true,
+      "Fried Rice",
     ),
     Product(
       6,
@@ -73,6 +78,7 @@ class Utils {
       4,
       "http://www.bibigo.com/img/en/obj_home1_1.png",
       true,
+      "Dumplings",
     ),
     Product(
       7,
@@ -82,6 +88,7 @@ class Utils {
       2,
       "https://forums.ultra-combo.com/uploads/default/original/2X/8/89674b29f7366334aae4ad532e230bd04f7a07df.png",
       true,
+      "Pepperoni Pizza",
     ),
   ];
 

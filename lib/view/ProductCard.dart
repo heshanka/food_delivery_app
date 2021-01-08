@@ -82,14 +82,17 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               Center(
-                child: CachedNetworkImage(
-                    placeholder: (context, url) => Container(
-                          child: Image.asset(
-                            "assets/edited.gif",
-                          ),
-                        ), //,
-                    imageUrl: product.imgURL,
-                    height: imgHeight * scaleFactor),
+                child: Hero(
+                  tag: product.heroTag,
+                                  child: CachedNetworkImage(
+                      placeholder: (context, url) => Container(
+                            child: Image.asset(
+                              "assets/edited.gif",
+                            ),
+                          ), //,
+                      imageUrl: product.imgURL,
+                      height: imgHeight * scaleFactor),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 8.0 * scaleFactor),

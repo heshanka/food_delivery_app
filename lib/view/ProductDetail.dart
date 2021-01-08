@@ -77,15 +77,18 @@ class ProductDetail extends StatelessWidget {
             ),
           ),
           Center(
-            child: CachedNetworkImage(
-              placeholder: (context, url) => Container(
-                child: Image.asset(
-                  "assets/edited.gif",
-                ),
-              ), //,
-              imageUrl: product.imgURL,
-              width: 300 * scaleFactor,
-              height: 260 * scaleFactor,
+            child: Hero(
+              tag: product.heroTag,
+                          child: CachedNetworkImage(
+                placeholder: (context, url) => Container(
+                  child: Image.asset(
+                    "assets/edited.gif",
+                  ),
+                ), //,
+                imageUrl: product.imgURL,
+                width: 300 * scaleFactor,
+                height: 260 * scaleFactor,
+              ),
             ),
           ),
           Padding(
