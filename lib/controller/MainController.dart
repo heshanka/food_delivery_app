@@ -1,4 +1,4 @@
-import 'CartModel.dart';
+import 'CartController.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'FavoritesController.dart';

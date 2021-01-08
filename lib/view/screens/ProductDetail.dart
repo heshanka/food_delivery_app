@@ -4,7 +4,7 @@ import 'package:food_delivery_app/controller/FavoritesController.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/CartWidget.dart';
 import '../../Utils.dart';
-import '../../controller/CartModel.dart';
+import '../../controller/CartController.dart';
 import '../../controller/MainController.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../model/Product.dart';

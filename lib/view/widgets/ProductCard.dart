@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/FavoritesController.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Utils.dart';
-import '../../controller/CartModel.dart';
+import '../../controller/CartController.dart';
 import '../../controller/MainController.dart';
 import '../../model/Product.dart';
 import '../screens/ProductDetail.dart';

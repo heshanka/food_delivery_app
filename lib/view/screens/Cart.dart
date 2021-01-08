@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/controller/CartModel.dart';
+import 'package:food_delivery_app/controller/CartController.dart';
 import 'package:food_delivery_app/controller/MainController.dart';
 import 'package:food_delivery_app/view/widgets/CartItem.dart';
 import 'package:scoped_model/scoped_model.dart';

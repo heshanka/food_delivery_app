@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/model/Product.dart';
 import '../../Utils.dart';
-import '../../controller/CartModel.dart';
+import '../../controller/CartController.dart';
 import '../../controller/MainController.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -70,10 +70,12 @@ class CartItem extends StatelessWidget {
                   width: 100 * scaleFactor,
                   height: 120 * scaleFactor,
                 ),
-                Text(
-                  "\$" + Utils.numFormat.format(product.price),
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  textScaleFactor: scaleFactor,
+                ScopedModelDescendant<CartController>(
+                  builder: (context, child, model) => Text(
+                    "\$" + Utils.numFormat.format(product.price * model.getProductQuantity(product.id) ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    textScaleFactor: scaleFactor,
+                  ),
                 )
               ],
             ),
