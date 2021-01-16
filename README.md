@@ -9,4 +9,4 @@ This application uses Scoped Model architecture for state management, making the
 
 Currently the app is not connected to an API (data is stored locally) though a connection - an actual API can be done if more time were to be spent on this project; Also more safety checks can be implemented to handle data if so. The app can also contain more features such as a profile section, and related details with more time. The design can also be improved to prove more user-friendliness: e.g. confirmation dialogs, and tested for compatibilities(design) among devices.
 
-![](foodapp.gif)
+![](food_app.gif)
